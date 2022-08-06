@@ -22,17 +22,17 @@ It also describes the use of folder **"junctions"** when content is located outs
   * It's bundled with Workbench which is extremely useful for managing databases and has a much nicer GUI than phpMyAdmin.
   * You can work on databases without running XAMPP.
   * You can choose a version that matches your web server.
-    * Workbench can also be used to access your web server's MySQL databases.
+    * Workbench can also be used to access your web server's MySQL databases. *This is not covered here.*
 * XAMPP - You can find it [here](https://www.apachefriends.org/)
   * Choose a version where the PHP version matches your web server's PHP version.
 
 **NOTES**: 
 **a)** At the time when this document was created (2022-07-29) and when XAMPP installed on Windows 10 Pro (21H2) it may be necessary to run XAMPP as *administrator*.
-**b)** 
+**b)** XAMPP can be manipulated to use more than one version of PHP. See the [Xampp PHP Switcher](https://github.com/JackieDo/Xampp-PHP-Switcher) for details.
 
 ## XAMPP and MySQL
 
-According to the [XAMPP Windows FAQ](https://www.apachefriends.org/faq_windows.html) XAMPP comes with MariaDB *instead of* MySQL since XAMPP versions 5.5.30 and 5.6.14. However, note that the XAMPP control panel might still say "MySQL" and not "MariaDB".
+According to the [XAMPP Windows FAQ](https://www.apachefriends.org/faq_windows.html) it comes with MariaDB *instead of* MySQL since XAMPP versions 5.5.30 and 5.6.14. However, note that the XAMPP control panel might still say "MySQL" and not "MariaDB".
 
 When MySQL *Community Edition* is installed it will be necessary to make a small change if you want to use XAMPP's phpMyAdmin script:
 
@@ -46,7 +46,7 @@ When MySQL *Community Edition* is installed it will be necessary to make a small
 
 Now phpMyAdmin should work as expected.
 
-The phpMyAdmin config file can be edited directly at `c:/xampp/phpMyAdmin/config.inc.php` if XAMPP was installed to its default location.
+The phpMyAdmin config file can be edited directly at `c:/xampp/phpMyAdmin/config.inc.php` but only if XAMPP was installed to its default location.
 
 # Folder Junctions
 
