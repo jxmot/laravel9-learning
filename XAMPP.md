@@ -2,28 +2,53 @@
 
 * [Overview](#overview)
 * [Prerequisites](#prerequisites)
-    * [XAMPP Configuration and MySQL](#xampp-configuration-and-mysql)
+    * [XAMPP and MySQL](#xampp-and-mysql)
 * [Folder Junctions](#folder-junctions)
     * [Example](#example)
 
 # Overview
 
-This document describes how to set up XAMPP when MySQL is present and may be running *outside* of XAMPP. It also describes the use of folder **"junctions"** when content is located elsewhere during development.
+This document describes a development environment for Windows 10 that contains:
+
+* XAMPP and PHP - For the purposes of this document MySQL/MariaDB **are not** installed as part of XAMPP.
+* MySQL *Community Edition* - It is assumed that this has been installed and that a password has been set for the "root" user.
+
+It also describes the use of folder **"junctions"** when content is located outside of XAMPP's *document root* during development.
 
 # Prerequisites
 
-* XAMPP is installed (*includes its own MySQL server*) - <https://www.apachefriends.org/>
-* MySQL (*Community Edition*) may, or may not be installed - <https://www.mysql.com/>. However, the benefits to installing MySQL independently are:
+* [MySQL *Community Edition*](https://www.mysql.com/) may, or may not be installed. However, the benefits to installing MySQL independently are:
   * It's bundled with Workbench which is extremely useful for managing databases and has a much nicer GUI than phpMyAdmin.
   * You can work on databases without running XAMPP
   * You can choose a version that matches your web server.
+* XAMPP is installed - You can find it [here](https://www.apachefriends.org/)
 * Windows OS - these instructions are specific to Windows 10 Home or Pro.
 
 **NOTE**: At the time when this document was created (2022-07-29) and when XAMPP installed on Windows 10 (21H2) it may be necessary to run XAMPP as *administrator*.
 
-## XAMPP Configuration and MySQL
+## XAMPP and MySQL
 
-XAMPP comes with MariaDB and its installation with XAMPP is optional. However its version may not match your deployment server. In fact many typical web servers have MySQL installed. 
+According to the [XAMPP Windows FAQ](https://www.apachefriends.org/faq_windows.html) XAMPP comes with MariaDB *instead of* MySQL since XAMPP versions 5.5.30 and 5.6.14.
+
+The installation of MariaDB is optional when 
+
+
+When MySQL *Community Edition* is installed it will be necessary to make a small change if you want to use XAMPP's phpMyAdmin script:
+
+1) Start the XAMPP control panel
+2) Stop Apache
+3) Click the "Config" button and choose "phpMyAdmin(config.inc.php)"
+4) Find the line - `$cfg['Servers'][$i]['password'] = ''`
+5) Add your MySQL "root" user password
+6) Save the file
+7) Restart Apache via the XAMPP control panel
+
+Now phpMyAdmin should work as expected.
+
+
+`xampp/phpMyAdmin/config.inc.php`
+
+
 
 # Folder Junctions
 
