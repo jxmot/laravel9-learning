@@ -19,7 +19,7 @@ Hopefully you landed here before diving into the multitude of Laravel 9 tutorial
 
 Why? Because I've done that for you. I have gone through many Laravel tutorials(*good **and** bad*) and collected useful and *correct* directions and information.
 
-The tutorials and related source code you will find here have been *tested* and are *working*.
+The tutorials and related source code files you will find here have been *tested* and are *working*.
 
 # No Docker Required
 
