@@ -13,6 +13,10 @@ This repository will contain information and source code related to Laravel 9:
 * Create a simple CRUD application
 * Miscellaneous Notes about Laravel **9**
 
+<div style="border: 3px solid red;">
+This is some text.
+</div>
+
 # Before You Begin
 
 Hopefully you landed here before diving into the multitude of Laravel 9 tutorials. 
