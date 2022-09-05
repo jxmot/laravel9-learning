@@ -9,9 +9,17 @@ This repository will contain information and source code related to Laravel 9.
 
 ## Goals
 
+You will learn how to:
 
+* Create a Bootstrap 4 *horizontal* menu/navbar the **right way**
+* Organize blade files properly
+* Create a simple CRUD, the **right way**
+* Put the parts (*navmenu and CRUD*) together and end up with a *working* Laravel 9 application.
+
+In addition, unlike other so called "tutorials" all of the required details will be present and **verified**.
 
 ## Anti Goals
+
 
 
 # Development Environment
@@ -79,9 +87,10 @@ In MySQL Workbench you will also need to:
 
 - [ ] Create a "schema", name it **`laravel_learn`**
 - [ ] Create a "user", name it **`laravel_user`**
+  - [ ] Give the user a password
   - [ ] Give appropriate permissions to the user for all tables under the **`laravel_learn`** schema.
 
-The reason 
+The reason you should create a specific MySQL schema and user for this application or any application is *safety*. And it's good practice.
 
 And you will need to:
 
