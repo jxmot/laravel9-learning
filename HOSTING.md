@@ -112,7 +112,8 @@ Now if you take your browser and go to `http://[SUBDOM].example.com/` it will au
 # Important Notes
 
 * When copying your application source onto the server do not overwrite the changes made in the [Enable HTTPS](#enable_https) steps above.
-* The `.env` file with your application's changes in it will need to be modified. The minimum changes are:
+* Although the database has been prepared it is **not** used, your application will be using it.
+  * The `.env` file with your application's changes in it will need to be modified. The minimum changes are:
 
 ```
 DB_DATABASE=[USER]_invapp_db
@@ -121,3 +122,4 @@ DB_PASSWORD=[password goes here]
 ```
 
 * The `php artisan...` commands should be run while in the terminal and located in the `/home/[USER]/public_html/subdoms/[APPDIR]` folder.
+
