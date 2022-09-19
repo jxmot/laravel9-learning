@@ -40,8 +40,10 @@ At the server go to "Databases -> MySQL® Databases":
 1) Create a new database, and give it an appropriate name.
     `[USER]_invapp_db` (the `[USER]` portion is automatic, you will be adding the `_invapp_db` part)
 
-2) create user(s) for the new database
+2) create a new user for the new database
     `[USER]_invapp_user` (same as the database names)
+
+Make note of the password you created for the user. It will be needed for setting up your Laravel application.
 
 **NOTE**: cPanel does NOT indicate any database <-> user association.
 
@@ -53,10 +55,9 @@ Prepare for Laravel installation(can be done via terminal or SFTP/FTP, if not it
 
 2) to keep things organized create a folder named `subdoms`. It will be the location that contain folders that will be the path for a subdomain
 
-3) navigate into `subdoms`
+3) navigate into the `subdoms` folder
 
 4) create a folder to contain your Laravel installation, name it something appropriate to your application. Such as `blog`, `inventory`, `recipes` and so forth. Abbreviations can be used as long as you remember what they belong to. This will be referred to as `[APPDIR]` from this point forward in this document.
-
 
 ## Install Laravel
 
@@ -110,8 +111,13 @@ Now if you take your browser and go to `http://[SUBDOM].example.com/` it will au
 
 # Important Notes
 
-**IMPORTANT!!!** When copying your application source onto the server do not overwrite the changes made in the [Enable HTTPS](#enable_https) steps above. 
+* When copying your application source onto the server do not overwrite the changes made in the [Enable HTTPS](#enable_https) steps above.
+* The `.env` file with your application's changes in it will need to be modified. The minimum changes are:
 
+```
+DB_DATABASE=[USER]_invapp_db
+DB_USERNAME=[USER]_invapp_user
+DB_PASSWORD=[password goes here]
+```
 
-
-
+* The `php artisan...` commands should be run while in the terminal and located in the `/home/[USER]/public_html/subdoms/[APPDIR]` folder.
