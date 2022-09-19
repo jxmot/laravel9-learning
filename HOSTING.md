@@ -1,7 +1,7 @@
 
 # Hosting a Laravel Application
 
-These instructions will cover installing a Laravel application so that it is accessible via a subdomain on an internet accessible server. 
+These instructions will cover installing a basic Laravel application so that it is accessible via a subdomain on an internet accessible server. 
 
 For example - 
 
@@ -10,10 +10,13 @@ For example -
 Note: the following substitutions are used in this document:
 
 * `[USER]` = the domain's primary user
-* `[APPDIR]` = the folder where Laravel will be installed
+* `[APPDIR]` = the folder name where Laravel will be installed
 * `[SUBDOM]` = subdomain name
+* `[APPNAME]` = the name of the application, this is for use in various names or IDs.
 
-These instructions will take you to a point where a "basic" Laravel application will be installed **without** any modifications. 
+The names`[APPDIR]`, `[SUBDOM]` and `[APPNAME]` can be identical, but using descriptive names like `blog`, `store` and so forth is recommended.
+
+These instructions will take you to a point where a "basic" Laravel application will be installed **without** any end-use application specific modifications. 
 
 # Getting Started
 
@@ -27,6 +30,8 @@ Required:
   * SSH access for a terminal and file transfer
     * The Bitvise SSH client is recommended
 
+# Start Here 
+
 Before you start make sure that:
 
 * Your domain's disk quota is set appropriately. The basic Laravel installation will need about 50mb. Additional space will be used by your application-specific source files and other content.
@@ -35,13 +40,13 @@ Before you start make sure that:
 
 ## Database Set Up
 
-At the server go to "Databases -> MySQL® Databases":
+At the server in cPanel go to "Databases -> MySQL® Databases":
 
 1) Create a new database, and give it an appropriate name.
-    `[USER]_invapp_db` (the `[USER]` portion is automatic, you will be adding the `_invapp_db` part)
+    `[USER]_[APPNAME]_db` (the `[USER]` portion is automatic, you will be adding the `_[APPNAME]_db` part, and `[APPNAME]` is just a simple name to relate the database to your application)
 
 2) create a new user for the new database
-    `[USER]_invapp_user` (same as the database names)
+    `[USER]_[APPNAME]_user` (same as the database names)
 
 Make note of the password you created for the user. It will be needed for setting up your Laravel application.
 
@@ -77,7 +82,7 @@ Set up the subdomain via cPanel:
 
 1) Go to "Domains -> Subdomains" in cPanel
 
-2) enter a name in "Subdomain" field, this will be referred to as `[SUBDOM]` later in this document
+2) enter a name in "Subdomain" field, this will be referred to as `[SUBDOM]` later in this document, it could be identical to `[APPNAME]` for easier reference of the application to the database and the database user
 
 3) in the "Document Root" field enter this - `subdoms/[APPDIR]/public`
 
@@ -88,7 +93,6 @@ To test the installation use your browser and navigate to:
     `http://[SUBDOM].example.com/`
 
 You should see the default Laravel splash page.
-
 
 ## Enable HTTPS
 
@@ -111,8 +115,8 @@ Now if you take your browser and go to `http://[SUBDOM].example.com/` it will au
 
 # Important Notes
 
-* When copying your application source onto the server do not overwrite the changes made in the [Enable HTTPS](#enable_https) steps above.
-* Although the database has been prepared it is **not** used, your application will be using it.
+* When copying your application source onto the server do not overwrite the changes made in the [Enable HTTPS](#enable_https) steps above. Incorporate them into your source code.
+* Although the database has been prepared it is **not** used by the basic Laravel installation. But your application will be using it after it's installed and set up.
   * The `.env` file with your application's changes in it will need to be modified. The minimum changes are:
 
 ```
