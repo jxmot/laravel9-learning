@@ -37,9 +37,10 @@ Before you start make sure that:
 
 At the server go to "Databases -> MySQL® Databases":
 
-a) Create a new database, and give it an appropriate name.
+1) Create a new database, and give it an appropriate name.
     `[USER]_invapp_db` (the `[USER]` portion is automatic, you will be adding the `_invapp_db` part)
-b) create user(s) for the new database
+
+2) create user(s) for the new database
     `[USER]_invapp_user` (same as the database names)
 
 **NOTE**: cPanel does NOT indicate any database <-> user association.
@@ -48,33 +49,42 @@ b) create user(s) for the new database
 
 Prepare for Laravel installation(can be done via terminal or SFTP/FTP, if not it will be noted):
 
-a) navigate to `/home/[USER]/public_html`
-b) to keep things organized create a folder named `subdoms`. It will be the location that contain folders that will be the path for a subdomain
-c) navigate into `subdoms`
-d) create a folder to contain your Laravel installation, name it something appropriate to your application. Such as `blog`, `inventory`, `recipes` and so forth. Abbreviations can be used as long as you remember what they belong to. This will be referred to as `[APPDIR]` from this point forward in this document.
+1) navigate to `/home/[USER]/public_html`
+
+2) to keep things organized create a folder named `subdoms`. It will be the location that contain folders that will be the path for a subdomain
+
+3) navigate into `subdoms`
+
+4) create a folder to contain your Laravel installation, name it something appropriate to your application. Such as `blog`, `inventory`, `recipes` and so forth. Abbreviations can be used as long as you remember what they belong to. This will be referred to as `[APPDIR]` from this point forward in this document.
 
 
 ## Install Laravel
 
 Installing Laravel will require the use of the terminal:
 
-a) navigate to `/home/[USER]/public_html/subdoms/[APPDIR]`
-b) run this to install Laravel:
+1) navigate to `/home/[USER]/public_html/subdoms/[APPDIR]`
+
+2) run this to install Laravel:
+
     `composer create-project laravel/laravel --prefer-dist .`
 
-c) if successful this folder will now contain a "basic" Laravel installation.
+3) if successful this folder will now contain a "basic" Laravel installation.
 
 ## Subdomain Setup
 
 Set up the subdomain via cPanel:
 
-a) Go to "Domains -> Subdomains" in cPanel
-b) enter a name in "Subdomain" field, this will be referred to as `[SUBDOM]` later in this document
-c) in the "Document Root" field enter this - `subdoms/[APPDIR]/public`
-d) click "Create"
+1) Go to "Domains -> Subdomains" in cPanel
+
+2) enter a name in "Subdomain" field, this will be referred to as `[SUBDOM]` later in this document
+
+3) in the "Document Root" field enter this - `subdoms/[APPDIR]/public`
+
+4) click "Create"
 
 To test the installation use your browser and navigate to:
-            `http://[SUBDOM].example.com/`
+
+    `http://[SUBDOM].example.com/`
 
 You should see the default Laravel splash page.
 
@@ -84,14 +94,17 @@ You should see the default Laravel splash page.
 To enable httpS and force http -> https:
 
 1) navigate to `/home/[USER]/public_html/subdoms/[APPDIR]/public`
+
 2) edit `.htaccess`and just below the `RewriteEngine On` line add the following two lines and save the file:
 
-      `RewriteCond %{HTTPS} !=on`
-      `RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]`
+    `RewriteCond %{HTTPS} !=on`
+    `RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]`
 
 3) navigate to `/home/[USER]/public_html/subdoms/[APPDIR]/app/Providers`
+
 4) edit `AppServiceProvider.php`, add the following to the `boot()` function:
-       `\URL::forceScheme('https');`
+
+    `\URL::forceScheme('https');`
 
 Now if you take your browser and go to `http://[SUBDOM].example.com/` it will automatically switch to httpS.
 
