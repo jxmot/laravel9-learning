@@ -102,8 +102,10 @@ To enable httpS and force http -> https:
 
 2) edit `.htaccess`and just below the `RewriteEngine On` line add the following two lines and save the file:
 
-    `RewriteCond %{HTTPS} !=on`
-    `RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]`
+```
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+```
 
 3) navigate to `/home/[USER]/public_html/subdoms/[APPDIR]/app/Providers`
 
